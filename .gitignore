@@ -25,4 +25,6 @@ dist-ssr
 
 # Environmental variables files
 .env
+.env.test
+.env.production
 .env.development

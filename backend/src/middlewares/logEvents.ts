@@ -17,12 +17,14 @@ export const logEvents = async (message: string, logName: string) => {
 
     await fsPromises.appendFile(path.join(__dirname, "..", "logs", logName), logItem);
   } catch (err) {
-    console.log(err);
+    console.log("Error in logEvents", err);
   }
 };
 
-export const logger = (req: Request, res: Response, next: NextFunction) => {
+const logger = (req: Request, res: Response, next: NextFunction) => {
   logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, "reqLog.txt");
   console.log(`${req.method} ${req.path}`);
   next();
 };
+
+export default logger;
